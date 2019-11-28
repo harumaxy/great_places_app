@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:great_places/helpers/location_helper.dart';
+import 'package:great_places/models/place.dart';
 import 'package:great_places/screens/map_screen.dart';
 import 'package:location/location.dart';
 
@@ -16,6 +17,7 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   // GoogleMapで、マップスナップショット保存APIが作ったプレビュー画像へのurl
   String _previewImageUrl;
+  PlaceLocation _pickedLocation;
 
   void _showPreview(double lat, double lng) {
     final staticMapImageUrl = LocationHelper.generateLocationPreviewImage(
@@ -24,6 +26,7 @@ class _LocationInputState extends State<LocationInput> {
     );
     setState(() {
       _previewImageUrl = staticMapImageUrl;
+      _pickedLocation = PlaceLocation(latitude: lat, longitude: lng);
     });
   }
 
@@ -42,7 +45,11 @@ class _LocationInputState extends State<LocationInput> {
     final LatLng selectedLocation = await Navigator.of(context).push<LatLng>(
       MaterialPageRoute(
         fullscreenDialog: true,
-        builder: (ctx) => MapScreen(isSelecting: true),
+        builder: (ctx) => MapScreen(
+          isSelecting: true,
+          initialLocation: _pickedLocation ??
+              const PlaceLocation(latitude: 35.41, longitude: 139.45),
+        ),
       ),
     );
 
