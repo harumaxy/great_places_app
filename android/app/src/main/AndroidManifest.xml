@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.great_places">
+    package="harumaxy.com.github.great_places">
     <!-- userParmission -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -16,7 +16,7 @@
         <!-- google maps palatform のためののAPIキー -->
         <!-- applicationタグ直下じゃないと認識されないので注意(1敗) -->
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCtcXEtJQEwSxufRcTLgLqrnGc1dNzCPuo"/>
+            android:value="AIzaSyBu60F_wyNCsWLJBUTWQ7PCc3TEpeCuOqc"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
